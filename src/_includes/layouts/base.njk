@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="origin-trial" content="Akxl6yyEJgqlpaQ2qr+VNcUhI5n4Li3L4ptIbHtV2KXVJcaWHwY6xqX8FD0WylOT5bUOpxg6a6ASJ2xx5ryOdw8AAABneyJvcmlnaW4iOiJodHRwczovL2Jsb2cuZG9tZW5pYy5tZTo0NDMiLCJmZWF0dXJlIjoiU3BlY3VsYXRpb25SdWxlc1ByZWZldGNoRnV0dXJlIiwiZXhwaXJ5IjoxNjk0MTMxMTk5fQ==">
+
+<title>{{ title or metadata.title }}</title>
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/prism.css">
+<link rel="canonical" href="{{ page.url | absoluteURL }}">
+<link rel="alternate" type="application/rss+xml" title="{{ metadata.title }}" href="/atom.xml">
+
+{% if not title %}<meta property="twitter:account_id" content="30968081">{% endif %}
+{% if title %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@{{ metadata.author.twitter }}">
+  <meta property="og:title" content="{{ title }}">
+{% endif %}
+
+<header class="site-header">
+  <div class="wrapper">
+    <h1 class="site-title"><a href="/">{{ metadata.title }}</a></h1>
+    <p class="tagline">{{ metadata.description }}</p>
+
+    <nav class="site-nav">
+      <a href="/atom.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-content">
+  <div class="wrapper">
+    {{ content | safe }}
+  </div>
+</div>
+
+<footer>
+  <div>
+    <p>{{ metadata.title }}</p>
+    <p>Source at <a href="https://github.com/{{ metadata.repo }}/">{{ metadata.repo }}</a></p>
+  </div>
+
+  <ul id="social-media-list">
+    <li>
+      <a href="https://github.com/{{ metadata.author.github }}"><span class="icon icon--github">{% include "icon-github.svg" %}</span><span class="username">{{ metadata.author.github }}</span></a>
+    </li>
+    <li>
+      <a href="{{ metadata.author.linkedin }}"><span class="icon icon--linkedin">{% include "icon-linkedin.svg" %}</span><span class="username">{{ metadata.author.linkedinname }}</span></a>
+    </li>
+  </ul>
+
+  <div>
+    <p>Copyright © {{ metadata.author.name }}</p>
+    <p><a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a></p>
+  </div>
+</footer>
+
+<script type="module" async src="/js/preload.mjs"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ metadata.google_analytics_tracking_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ metadata.google_analytics_tracking_id }}');
+</script>

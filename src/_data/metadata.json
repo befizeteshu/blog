@@ -1,0 +1,14 @@
+{
+  "title": "Befizetés.hu blog",
+  "url": "https://blog.befizetes.hu/",
+  "description": "Befizetés.hu blog",
+  "repo": "befizeteshu/blog",
+  "author": {
+    "name": "Befizetés.hu Ltd",
+    "email": "info@befizetes.hu",
+    "linkedin": "https://www.linkedin.com/in/g%C3%A1bor-dolla-1a98794",
+    "linkedinname": "Gábor",
+    "github": "befizeteshu"
+  },
+  "google_analytics_tracking_id": ""
+}

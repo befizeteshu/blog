@@ -1,0 +1,16 @@
+---
+eleventyComputed:
+  title: "{{ category }}"
+pagination:
+  data: collections
+  size: 1
+  alias: category
+  filter: [all, posts, categories]
+permalink: /categories/{{ category | slug }}/
+layout: layouts/base.njk
+---
+<h2 class="page-heading">{{ category }}</h2>
+
+{% import 'macros.njk' as macros %}
+
+{{ macros.postList(collections[category], "h3") }}

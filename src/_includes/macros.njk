@@ -1,0 +1,30 @@
+{%- macro categoryList(categories) -%}
+{%- set comma = joiner() -%}
+{%- for category in categories -%}
+{{ comma() }} <a class="category-link" href="/categories/{{ category | slug }}">{{ category }}</a>
+{%- endfor -%}
+{%- endmacro -%}
+
+{%- macro postList(posts, yearHeading) -%}
+<div id="blog-archives">
+  {% for post in posts | reverse %}
+
+  {%- set this_year = post.data.date | getYear -%}
+
+  {%- if year != this_year -%}
+    {%- set year = this_year -%}
+    <{{yearHeading}} class="year-heading">{{year}}</{{yearHeading}}>
+
+  {% endif -%}
+
+  <article>
+    <a class="article-title" href="{{ post.url }}">{{ post.data.title }}</a>
+    <time datetime="{{ post.date.toISOString() }}">{{ post.date | archiveDateHTML | safe }}</time>
+    <footer>
+      <span class="categories">posted in {{ categoryList(post.data.tags) }}</span>
+    </footer>
+  </article>
+
+  {% endfor %}
+</div>
+{%-endmacro -%}
